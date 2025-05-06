@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-status">
+            <span id="user-greeting"></span>
+            <button id="address-btn" class="btn btn-small">Mi Dirección</button>
+            <button id="logout-btn" class="btn btn-small">Cerrar Sesión</button>
+        </div>
+        <h1>Frutimanía</h1>
+
+        <div class="sections">
+            <section class="productos">
+                <h2>Productos Disponibles</h2>
+                <div id="lista-productos" class="lista-productos"></div>
+            </section>
+
+            <section class="carrito">
+                <h2>Tu Carrito</h2>
+                <div id="carrito-id" style="display: none;"></div>
+                <div id="lista-carrito" class="lista-carrito"></div>
+                <div class="total-carrito">
+                    <strong>Total: $<span id="total-carrito">0.00</span></strong>
+                </div>
+                <div class="cart-actions">
+                    <button id="crear-carrito" class="btn">Vaciar Carrito</button>
+                    <button id="checkout-btn" class="btn btn-primary">Proceder al Pago</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

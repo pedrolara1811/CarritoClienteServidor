@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Dirección</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .address-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .address-form {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .saved-address {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .address-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="address-container">
+        <div class="auth-status">
+            <span id="user-greeting"></span>
+            <button id="back-to-cart" class="btn btn-small">Volver al Carrito</button>
+            <button id="logout-btn" class="btn btn-small">Cerrar Sesión</button>
+        </div>
+
+        <h1>Mi Dirección de Envío</h1>
+
+        <!-- Area for displaying saved address -->
+        <div id="saved-address-container" style="display: none;">
+            <div class="saved-address">
+                <h3>Dirección Guardada</h3>
+                <p id="saved-address-text"></p>
+                <button id="edit-address-btn" class="btn">Editar Dirección</button>
+            </div>
+        </div>
+
+        <!-- Address form -->
+        <div id="address-form-container" class="address-form">
+            <h2>Información de Dirección</h2>
+            <p>Por favor completa todos los campos para guardar tu dirección.</p>
+
+            <form id="address-form">
+                <div class="form-group">
+                    <label for="street">Calle</label>
+                    <input type="text" id="street" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="number">Número</label>
+                        <input type="text" id="number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zip_code">Código Postal</label>
+                        <input type="text" id="zip_code" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">Ciudad</label>
+                        <input type="text" id="city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">Estado</label>
+                        <input type="text" id="state" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">País</label>
+                    <input type="text" id="country" required>
+                </div>
+
+                <div class="address-actions">
+                    <button type="button" id="cancel-address" class="btn btn-danger">Cancelar</button>
+                    <button type="submit" id="save-address" class="btn">Guardar Dirección</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="address.js"></script>
+</body>
+</html>
