@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalCarrito = document.getElementById('total-carrito');
     const crearCarritoBtn = document.getElementById('crear-carrito');
     const carritoIdElement = document.getElementById('carrito-id');
+    const serverIP = "http://localhost:5000";
 
     let carritoId = localStorage.getItem('carritoId');
     let carritoActual = null;
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('user-greeting').textContent = `Hola, ${user.name}`;
 
     // Cargar productos
-    fetch('http://localhost:5000/productos')
+    fetch(`${serverIP}/productos`)
         .then(response => response.json())
         .then(productos => {
             productosDisponibles = productos;
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function obtenerCarritoPorUsuario(userId) {
-        fetch(`http://localhost:5000/carrito/usuario/${userId}`)
+        fetch(`${serverIP}/carrito/usuario/${userId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const promises = [];
         for (let i = carritoActual.items.length - 1; i >= 0; i--) {
             promises.push(
-                fetch(`http://localhost:5000/carrito/${carritoId}/eliminar/${i}`, {
+                fetch(`${serverIP}/carrito/${carritoId}/eliminar/${i}`, {
                     method: 'DELETE'
                 }).then(res => res.json())
             );
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function cargarCarrito(id) {
-        fetch(`http://localhost:5000/carrito/${id}`)
+        fetch(`${serverIP}/carrito/${id}`)
             .then(response => response.json())
             .then(carrito => {
                 carritoActual = carrito;
@@ -236,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function agregarAlCarrito(productoId, cantidad) {
-        fetch(`http://localhost:5000/carrito/${carritoId}/agregar`, {
+        fetch(`${serverIP}/carrito/${carritoId}/agregar`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -265,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         actualizarTotalCarrito();
 
         // Actualización en el servidor
-        fetch(`http://localhost:5000/carrito/${carritoId}/actualizar/${itemIndex}`, {
+        fetch(`${serverIP}/carrito/${carritoId}/actualizar/${itemIndex}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -302,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function eliminarDelCarrito(carritoId, itemIndex) {
-        fetch(`http://localhost:5000/carrito/${carritoId}/eliminar/${itemIndex}`, {
+        fetch(`${serverIP}/carrito/${carritoId}/eliminar/${itemIndex}`, {
             method: 'DELETE'
         })
         .then(response => response.json())
@@ -331,7 +332,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'auth.html';
     });
     document.getElementById('address-btn').addEventListener('click', function() {
-    window.location.href = 'address.html';
+        window.location.href = 'address.html';
     });
-
 });
