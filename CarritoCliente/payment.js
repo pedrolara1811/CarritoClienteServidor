@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const serverIP = "http://localhost:5000";
     // Verificar autenticación
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user) {
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('user-greeting').textContent = `Hola, ${user.name}`;
 
         // Verificar si el usuario tiene una dirección guardada
-    fetch(`http://localhost:5000/address/user/${user.id}`)
+    fetch(`${serverIP}/address/user/${user.id}`)
         .then(response => response.json())
         .then(data => {
             if (!data.has_address) {
@@ -39,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cargarDatosCarrito(carritoId);
 
         // Cargar información de dirección del usuario
-    fetch(`http://localhost:5000/address/user/${user.id}`)
+    fetch(`${serverIP}/address/user/${user.id}`)
         .then(response => response.json())
         .then(data => {
             if (data.has_address) {
@@ -80,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function cargarDatosCarrito(carritoId) {
-    fetch(`http://localhost:5000/carrito/${carritoId}`)
+    const serverIP = `${serverIP}`;
+    fetch(`${serverIP}/carrito/${carritoId}`)
         .then(response => response.json())
         .then(carrito => {
             if (carrito.error) {
@@ -126,6 +128,7 @@ function cargarDatosCarrito(carritoId) {
 }
 
 function procesarPago(carritoId) {
+    const serverIP = `${serverIP}`;
     const user = JSON.parse(localStorage.getItem('user'));
 
     // Recopilar datos de la tarjeta
@@ -145,7 +148,7 @@ function procesarPago(carritoId) {
     confirmButton.textContent = 'Procesando...';
 
     // Enviar datos al servidor para procesar el pago
-    fetch(`http://localhost:5000/procesar-pago`, {
+    fetch(`${serverIP}/procesar-pago`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
