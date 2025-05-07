@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const serverIP = "http://localhost:5000";
     // Manejo de pestañas
     const tabs = document.querySelectorAll('.auth-tab');
     tabs.forEach(tab => {
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
 
-        fetch('http://localhost:5000/auth/login', {
+        fetch(`${serverIP}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
 
-        fetch('http://localhost:5000/auth/signup', {
+        fetch(`${serverIP}/auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
