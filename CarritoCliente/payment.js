@@ -1,5 +1,7 @@
+// Definir serverIP como variable global al inicio del archivo
+const serverIP = "http://localhost:5000";
+
 document.addEventListener('DOMContentLoaded', function() {
-    const serverIP = "http://localhost:5000";
     // Verificar autenticación
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user) {
@@ -81,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function cargarDatosCarrito(carritoId) {
-    const serverIP = `${serverIP}`;
     fetch(`${serverIP}/carrito/${carritoId}`)
         .then(response => response.json())
         .then(carrito => {
@@ -128,7 +129,6 @@ function cargarDatosCarrito(carritoId) {
 }
 
 function procesarPago(carritoId) {
-    const serverIP = `${serverIP}`;
     const user = JSON.parse(localStorage.getItem('user'));
 
     // Recopilar datos de la tarjeta
